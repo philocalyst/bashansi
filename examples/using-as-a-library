@@ -6,22 +6,22 @@ cd "${0%/*}"
 # Load the library into the Bash environment
 . ../ansi
 
-ansi::blue
+ansi_blue
 echo "This is blue"
 echo "Blue and blue and more blue."
-ansi::italic
-echo "The colors $(ansi::bold)don't automatically reset$(ansi::normal)."
-ansi::resetForeground
+ansi_italic
+echo "The colors $(../ansi_bold)don't automatically reset$(../ansi_normal)."
+ansi_resetForeground
 echo "The color was reset, but italics remain at this point."
-ansi::plain
+ansi_plain
 
 echo "Back to normal."
 
-echo "This is $(ansi::inverse)inverse$(ansi::noInverse) text."
+echo "This is $(ansi_inverse)inverse$(ansi_noInverse) text."
 
 # You can use the command as well, but this no longer runs ansi
 # as an external binary. It uses the function and saves time since
 # it no longer uses a subshell. As proof, we unset the PATH variable
 # before running ANSI so you know it's running a function.
-PATH="" ansi --green "This is running a function"
+PATH="" ../ansi --green "This is running a function"
 
