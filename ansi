@@ -16,7 +16,7 @@ ansi_backward() {
 }
 
 ansi_bell() {
-    printf "%s" "$(printf '\007')"
+    printf '\007'
 }
 
 ansi_black() {
@@ -505,7 +505,9 @@ ansi_plain() {
 
 ansi_position() {
     local position="${1-}"
-    printf '%s%sH' "$ANSI_CSI" "$(echo "$position" | sed 's/,/;/')"
+    local row=${position%%,*}
+    local col=${position##*,}
+    printf '%s%s;%sH' "$ANSI_CSI" "$row" "$col"
 }
 
 ansi_previousLine() {
