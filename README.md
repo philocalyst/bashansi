@@ -3,9 +3,9 @@ ANSI Code Generator
 
 ![](images/headline.png)
 
-This bash script will generate the proper ANSI escape sequences to move the cursor around the screen, make text bold, add colors and do much more.  It is designed to help you colorize words and bits of text.
+This dash script will generate the proper ANSI escape sequences to move the cursor around the screen, make text bold, add colors and do much more.  It is designed to help you colorize words and bits of text.
 
-If it helps, you can think of it as a curses / ncurses library for bash, or a tool that helps you using tricks from DOS's ANSI.SYS.  Or you might consider this to be your magic highlighter that has always been missing from bash.
+If it helps, you can think of it as a curses / ncurses library for dash, or a tool that helps you using tricks from DOS's ANSI.SYS.  Or you might consider this to be your magic highlighter that has always been missing from dash.
 
 
 Demonstrations
@@ -29,7 +29,7 @@ Demonstrations
 Installation
 ------------
 
-Download `ansi` and put it somewhere in your path.  Make sure that it is executable (`chmod a+x ansi` works well).  Bash will need to be present, but it is often installed by default.  No external commands are used; this only uses bash's built-in features.
+Download `ansi` and put it somewhere in your path.  Make sure that it is executable (`chmod a+x ansi` works well).  dash will need to be present, but it is often installed by default.  No external commands are used; this only uses dash's built-in features.
 
     # Download
     curl -OL git.io/ansi
@@ -238,7 +238,7 @@ The ANSI codes are written to stdout in order that the terminal might respond im
 Library Functions
 -----------------
 
-If you decide to leverage `ansi` as a Bash library and you load its functions into your environment, you gain access to the following functions. You will notice that they, for the most part, mirror the option names of the command-line program. These functions only do their one task and do not reset the terminal when done. Any exceptions to this are clearly called out.
+If you decide to leverage `ansi` as a dash library and you load its functions into your environment, you gain access to the following functions. You will notice that they, for the most part, mirror the option names of the command-line program. These functions only do their one task and do not reset the terminal when done. Any exceptions to this are clearly called out.
 
 In order to source `ansi` into the environment you will have to use one of a few different methods.
 
