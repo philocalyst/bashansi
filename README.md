@@ -93,9 +93,6 @@ It often helps when one can see how to use a new tool, so here's how this librar
     ansi --erase-display=2 --position=1,1 --show-cursor \
         --reset-font --reset-color
 
-    # Find out how many lines the terminal can display
-    ansi --report-window-chars | cut -d , -f 1
-
 Need more?  Check out the [examples/](examples/) folder.
 
 
@@ -207,22 +204,6 @@ These options force a reset of colors.  This is useful if you used `--no-reset` 
 * `--reset-font` - Reset the font to the primary font
 
 
-### Reporting
-
-All of these commands send a special code to the terminal.  The terminal responds as though someone typed something very fast.  In order for these to work, `ansi` must read from stdin directly.  This won't work if you are piping in a file or replace stdin in another way.
-
-The ANSI codes are written to stdout in order that the terminal might respond immediately. The result of the report is written to stdout.
-
-* `--report-position` - ROW,COL
-* `--report-window-state` - "open" or "iconified"
-* `--report-window-position` - X,Y
-* `--report-window-pixels` - HEIGHT,WIDTH
-* `--report-window-chars` - ROWS,COLS
-* `--report-screen-chars` - ROWS,COLS (this is for the entire screen)
-* `--report-icon`
-* `--report-title`
-
-
 ### Miscellaneous
 
 * `--color-table` - Display a color table.
@@ -263,7 +244,6 @@ When using this to change the color or perform terminal manipulation, make sure 
     # You must manually reset the colors
     ansi::resetForeground
 
-All of the functions write to stdout except `ansi::report`. That one uses stderr to query the terminal and its result will go into the `ANSI_REPORT` environment variable.
 
 None of the functions care if the terminal supports ANSI unless otherwise noted. They will happily write out ANSI codes even if the terminal will not recognize them.
 
@@ -365,23 +345,6 @@ These options force a reset of colors.  This is useful if you used `--no-reset` 
 * `ansi::resetBackground` - Reset the background to default
 * `ansi::resetColor` - Reset all color-related settings
 * `ansi::resetFont` - Reset the font to the primary font
-
-
-### Reporting
-
-All of these commands send a special code to the terminal.  The terminal responds as though someone typed something very fast.  In order for these to work, `ansi` must read from stdin directly.  This won't work if you are piping in a file or replace stdin in another way.
-
-The ANSI codes are written to stdout in order that the terminal might respond immediately. The result of the report is written to stdout.
-
-* `ansi::report` - Helper function to assist with querying the terminal for information. Writes a query to stderr (file descriptor 2), listens for information from stdin (file descriptor 0) and returns the result through the environment variable `ANSI_REPORT`.
-* `ansi::reportPosition` - ROW,COL
-* `ansi::reportWindowState` - "open" or "iconified"
-* `ansi::reportWindowPosition` - X,Y
-* `ansi::reportWindowPixels` - HEIGHT,WIDTH
-* `ansi::reportWindowChars` - ROWS,COLS
-* `ansi::reportScreenChars` - ROWS,COLS (this is for the entire screen)
-* `ansi::reportIcon`
-* `ansi::reportTitle`
 
 
 ### Miscellaneous
